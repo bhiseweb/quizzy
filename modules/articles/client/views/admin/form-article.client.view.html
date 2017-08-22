@@ -1,0 +1,55 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.article._id ? 'Edit Article' : 'New Article'}}</h1>
+  </div>
+  <div class="pull-right">
+    <a ng-show="vm.article._id" class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.articleForm" class="form-horizontal" ng-submit="vm.save(vm.form.articleForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="title">Question</label>
+          <input name="title" type="text" ng-model="vm.article.question" id="question" class="form-control" placeholder="question" required autofocus>
+          <div ng-messages="vm.form.articleForm.question.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">question is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+        <label class="control-label" for="options">Insert Options</label><br>
+          <label class="control-label" for="option1">option 1</label>
+          <input name="option" data-ng-model="vm.option1.option" id="option1" class="form-control" cols="30" rows="10" placeholder="option1"></input>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="option2">option 2</label>
+          <input name="option2" data-ng-model="vm.option2.option" id="option2" class="form-control" cols="30" rows="10" placeholder="option2"></input>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="option3">option 3</label>
+          <input name="option" data-ng-model="vm.option3.option" id="option3" class="form-control" cols="30" rows="10" placeholder="option3"></input>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="option4">option 4</label>
+          <input name="option4" data-ng-model="vm.option4.option" id="option4" class="form-control" cols="30" rows="10" placeholder="option4"></input>
+        </div>
+        <div class="form-group">
+        <label for="multipleSelect"> Select Correct Answer(s) : </label><br>
+        <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="vm.article.correct_answers" multiple>
+          <option value="0">Option 1</option>
+          <option value="1">Option 2</option>
+          <option value="2">Option 3</option>
+          <option value="3">Option 4</option>
+
+          </select>
+          </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">{{vm.article._id ? 'Update' : 'Create'}}</button>
+        </div>
+
+      </fieldset>
+    </form>
+  </div>
+</section>
